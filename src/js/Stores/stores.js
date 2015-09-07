@@ -9,8 +9,8 @@ es6Promise.polyfill();
 const SearchSource = {
   performSearch: {
     // remotely fetch something (required)
-    remote(state) {
-      return reqwest({url: 'https://api.github.com/repos/npm/npm/issues?page=1&per_page=25'});
+    remote(state) { // this is our Store state
+      return reqwest({url: `https://api.github.com/repos/npm/npm/issues?page=${state.state.toGetPage}&per_page=25`});
     },
 
     // this function checks in our local cache first
@@ -40,17 +40,18 @@ const SearchSource = {
 @datasource(SearchSource)
 class StoreTheo {
     constructor() {
-        this.state = { value: '' };
+        this.state = { toGetPage: 1 }; // default to 1
 
         this.registerAsync(SearchSource);
-        //this.onSearch();
-        //
         this.bindAction(Actions.fire, this.onSearch);
         
     }
 
-    onSearch() { // getInstance??
-        console.log('onSearch hit');
+    onSearch(params) {
+        console.log(params)
+        console.log(this.state);
+        this.state.toGetPage = params.toGetPage;
+        console.log(this.state);
         if (!this.getInstance().isLoading()) {
           console.log('inside !this.getInstance()');
             this.getInstance().performSearch();

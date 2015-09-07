@@ -11,7 +11,7 @@ export default class Main extends React.Component {
 
   componentDidMount() {
     console.log('did mount');
-    Actions.fire();
+    Actions.fire({toGetPage: 2});
   }
 
   _incCount() {
