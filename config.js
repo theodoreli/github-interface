@@ -18,6 +18,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.4",
     "react": "npm:react@0.14.0-beta3",
+    "react-dom": "npm:react-dom@0.14.0-beta3",
     "react-router": "npm:react-router@1.0.0-beta3",
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.4.3"
@@ -107,6 +108,10 @@ System.config({
     "npm:promise@7.0.4": {
       "asap": "npm:asap@2.0.3",
       "fs": "github:jspm/nodelibs-fs@0.1.2"
+    },
+    "npm:react-dom@0.14.0-beta3": {
+      "fbjs": "npm:fbjs@0.1.0-alpha.4",
+      "react": "npm:react@0.14.0-beta3"
     },
     "npm:react-router@1.0.0-beta3": {
       "invariant": "npm:invariant@2.1.0",
