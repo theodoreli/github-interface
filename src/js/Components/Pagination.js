@@ -26,7 +26,7 @@ export default class Pagination extends React.Component {
 
     return (
       <div>
-        {[1,2,3].map(number)}
+        {Array.from(Array(10).keys()).map(number)}
       </div>
     )
   }

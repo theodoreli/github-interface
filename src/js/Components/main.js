@@ -25,6 +25,7 @@ export default class Main extends React.Component {
         <div onClick={this._incCount.bind(this)} >
           Clicks hi reload {this.state.count}
         </div>
+        <Pagination />
       </div>
     );
   }
