@@ -48,6 +48,12 @@ class StoreTheo {
         this.registerAsync(SearchSource);
         
         this.bindAction(Actions.getPage, this.onSearch);
+        this.bindAction(Actions.ajaxSucc, this.onAjaxSucc);
+    }
+
+    onAjaxSucc(data) {
+      console.log('hey ajax succ')
+      console.log(data)
     }
 
     onSearch(params) {

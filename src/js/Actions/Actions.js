@@ -10,6 +10,8 @@ class LocationActions {
   ajaxSucc(res) {
     console.log('success handler');
     console.log(res);
+    console.log(this)
+    this.dispatch(res)
   }
   ajaxFail(res) {
     console.log('fail handler');
