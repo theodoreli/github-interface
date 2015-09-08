@@ -1,0 +1,28 @@
+html,
+body,
+div,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+/*
+   Apply a natural box layout model to all elements, but allowing components to change
+   Works on IE8 and above
+ */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  font-family: 'Open Sans';
+  font-weight: 300;
+}

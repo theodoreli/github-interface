@@ -6,6 +6,8 @@ import es6Promise from 'es6-promise';
 
 es6Promise.polyfill();
 
+//https://github.com/goatslacker/alt/issues/380
+
 const SearchSource = {
   performSearch: {
     // remotely fetch something (required)

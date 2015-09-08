@@ -3,6 +3,8 @@ import { Router, Route, Link } from 'react-router';
 import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
 import Pagination from './Pagination';
+import Header from './Header';
+import './Main.scss!';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -21,6 +23,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <Pagination />
         <div onClick={this._incCount.bind(this)} >
           Clicks hi reload {this.state.count}
