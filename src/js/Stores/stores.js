@@ -43,7 +43,7 @@ class StoreTheo {
         this.state = { toGetPage: 1 }; // default to 1
 
         this.registerAsync(SearchSource);
-        this.bindAction(Actions.fire, this.onSearch);
+        this.bindAction(Actions.getPage, this.onSearch);
         
     }
 

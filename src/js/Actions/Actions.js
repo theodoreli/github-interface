@@ -3,7 +3,7 @@ import Alt from '../alt'; // remember this is our own alt file, not the contribu
 class LocationActions {
   constructor() {
     this.generateActions(
-      'fire'
+      'getPage'
     );
   }
 

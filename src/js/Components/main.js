@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, Link } from 'react-router';
 import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
+import Pagination from './Pagination';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -11,7 +12,6 @@ export default class Main extends React.Component {
 
   componentDidMount() {
     console.log('did mount');
-    Actions.fire({toGetPage: 2});
   }
 
   _incCount() {
@@ -20,8 +20,11 @@ export default class Main extends React.Component {
         
   render() {
     return (
-      <div onClick={this._incCount.bind(this)} >
-        Clicks hi reload {this.state.count}
+      <div>
+        <Pagination />
+        <div onClick={this._incCount.bind(this)} >
+          Clicks hi reload {this.state.count}
+        </div>
       </div>
     );
   }

@@ -20,7 +20,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.4",
     "es6-promise": "npm:es6-promise@3.0.2",
-    "react": "npm:react@0.14.0-beta3",
+    "react": "npm:react@0.13.3",
     "react-dom": "npm:react-dom@0.14.0-beta3",
     "react-router": "npm:react-router@1.0.0-beta3",
     "reqwest": "npm:reqwest@2.0.3",
@@ -143,6 +143,11 @@ System.config({
       "keymirror": "npm:keymirror@0.1.1",
       "qs": "npm:qs@2.4.1",
       "warning": "npm:warning@1.0.2"
+    },
+    "npm:react@0.13.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "envify": "npm:envify@3.4.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:react@0.14.0-beta3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
