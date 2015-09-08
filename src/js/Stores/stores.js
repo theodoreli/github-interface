@@ -12,7 +12,7 @@ const SearchSource = {
   performSearch: {
     // remotely fetch something (required)
     remote(state) { // this is our Store state
-      return reqwest({url: `https://api.github.com/repos/npm/npm/issues?page=${state.state.toGetPage}&per_page=25`});
+      return reqwest({url: `https://api.github.com/repos/npm/npm/issues?page=${state.toGetPage}&per_page=25`});
     },
 
     // this function checks in our local cache first
@@ -38,22 +38,24 @@ const SearchSource = {
   }
 };
 
-@createStore(Alt)
-@datasource(SearchSource)
+// In the example they use these decorators. leave it out, screws up with store emitting events?
+//@createStore(Alt)
+//@datasource(SearchSource)
 class StoreTheo {
     constructor() {
-        this.state = { toGetPage: 1 }; // default to 1
+        this.toGetPage = 1;
 
         this.registerAsync(SearchSource);
-        this.bindAction(Actions.getPage, this.onSearch);
         
+        this.bindAction(Actions.getPage, this.onSearch);
     }
 
     onSearch(params) {
         console.log(params)
-        console.log(this.state);
-        this.state.toGetPage = params.toGetPage;
-        console.log(this.state);
+        this.toGetPage = params.toGetPage;
+        //this.state.toGetPage = params.toGetPage;
+        console.log(this.toGetPage);
+
         if (!this.getInstance().isLoading()) {
           console.log('inside !this.getInstance()');
             this.getInstance().performSearch();
@@ -61,4 +63,4 @@ class StoreTheo {
     }
 }
 
-export default Alt.createStore(StoreTheo);
+export default Alt.createStore(StoreTheo, 'StoreTheo');

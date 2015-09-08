@@ -17,7 +17,7 @@
   "jspm": {
     "directories": {},
     "dependencies": {
-      "alt": "npm:alt@~0.16",
+      "alt": "npm:alt@0.16.7",
       "es6-promise": "npm:es6-promise@^3.0.2",
       "react": "npm:react@0.13.3",
       "react-dom": "npm:react-dom@0.14.0-beta3",

@@ -15,7 +15,7 @@ System.config({
   },
 
   map: {
-    "alt": "npm:alt@0.16.10",
+    "alt": "npm:alt@0.16.7",
     "babel": "npm:babel-core@5.8.23",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.4",
@@ -62,7 +62,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "sass.js": "npm:sass.js@0.9.2"
     },
-    "npm:alt@0.16.10": {
+    "npm:alt@0.16.7": {
       "es-symbol": "npm:es-symbol@1.1.2",
       "eventemitter3": "npm:eventemitter3@0.1.6",
       "flux": "npm:flux@2.0.3"

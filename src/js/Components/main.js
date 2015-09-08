@@ -4,6 +4,7 @@ import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
 import Pagination from './Pagination';
 import Header from './Header';
+import Table from './Table';
 import './Main.scss!';
 
 export default class Main extends React.Component {
@@ -28,6 +29,7 @@ export default class Main extends React.Component {
         <div onClick={this._incCount.bind(this)} >
           Clicks hi reload {this.state.count}
         </div>
+        <Table />
         <Pagination />
       </div>
     );
