@@ -44,17 +44,20 @@ export default class Table extends React.Component {
     console.log(this.state);
     var dataArray = this.state.issues[this.state.currentPage] || [];
 
+    var tweetify = function(src) {
+      return String.prototype.slice.call(src, 0, 140);
+    }
+
     var createRow = function(data) {
       return (
         <div>
           <div className="avatar-wrapper">
             <img src={data.user.avatar_url} />  
           </div>
-          <div>
+          <div className="meat">
             <div>{ data.title }</div>
-            <div>{ data.body }</div>
-            <div>#{ data.number}</div> 
-
+            <div>{ tweetify(data.body) }</div>
+            <div>#{ data.number }</div> 
           </div>
         </div>
       )
