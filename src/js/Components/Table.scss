@@ -1,1 +1,34 @@
-.table {}
+.data-row {
+  margin-bottom: 45px;
+}
+
+.avatar-wrapper {
+  display: inline-block;
+
+  img {
+    width: 125px;
+  }
+}
+
+.meat {
+  display: inline-block;
+  margin-left: 45px;
+  max-width: 600px;
+  vertical-align: top;
+
+  .title {
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .tweet {
+    margin-bottom: 18px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .meta {
+    font-size: 16px;
+    font-weight: 300;
+    color: 7F7F7F;
+  }
+}

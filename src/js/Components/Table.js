@@ -50,14 +50,14 @@ export default class Table extends React.Component {
 
     var createRow = function(data) {
       return (
-        <div>
+        <div className="data-row">
           <div className="avatar-wrapper">
             <img src={data.user.avatar_url} />  
           </div>
           <div className="meat">
-            <div>{ data.title }</div>
-            <div>{ tweetify(data.body) }</div>
-            <div>#{ data.number }</div> 
+            <div className="title">{ data.title }</div>
+            <div className="tweet">{ tweetify(data.body) }</div>
+            <div className="meta">#{ data.number }</div> 
           </div>
         </div>
       )
