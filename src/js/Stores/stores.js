@@ -44,6 +44,7 @@ const SearchSource = {
 class StoreTheo {
     constructor() {
         this.toGetPage = 1;
+        this.pageContents = {}; 
 
         this.registerAsync(SearchSource);
         
@@ -54,6 +55,8 @@ class StoreTheo {
     onAjaxSucc(data) {
       console.log('hey ajax succ')
       console.log(data)
+
+      this.pageContents[this.toGetPage] = data;
     }
 
     onSearch(params) {

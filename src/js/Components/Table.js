@@ -8,7 +8,11 @@ export default class Table extends React.Component {
   constructor(props) {
     super(props)
     console.log(Store.getState())
-    this.state = {currentPage: 1};
+    this.state = {
+      currentPage: 1,
+      issues: Store.getState().pageContents
+    };
+
 
     // we need the below as there is no auto beinding for 'this' in React for non React methods
     // https://medium.com/@goatslacker/react-0-13-x-and-autobinding-b4906189425d
@@ -25,7 +29,8 @@ export default class Table extends React.Component {
   _onStoreChange() {
     console.log('_onStoreChange()');
     this.setState({
-      currentPage : Store.getState().toGetPage
+      currentPage : Store.getState().toGetPage,
+      issues: Store.getState().pageContents
     }); // not working currently.
 
     // then use this as a key from stores to look for issue data;
@@ -36,12 +41,29 @@ export default class Table extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+    var dataArray = this.state.issues[this.state.currentPage] || [];
+
+    var createRow = function(data) {
+      return (
+        <div>
+          <div className="avatar-wrapper">
+            <img src={data.user.avatar_url} />  
+          </div>
+          <div>
+            <div>{ data.title }</div>
+            <div>{ data.body }</div>
+            <div>#{ data.number}</div> 
+
+          </div>
+        </div>
+      )
+    };
+
     return (
-      <table onClick={this._getStoreState.bind(this)}>
-       <tr><td>
-      table
-       </td></tr> 
-      </table>
+      <div onClick={this._getStoreState.bind(this)}>
+        {dataArray.map(createRow)}
+      </div>
     )
   }
 }
