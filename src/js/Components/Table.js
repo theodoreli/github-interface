@@ -44,9 +44,30 @@ export default class Table extends React.Component {
     console.log(this.state);
     var dataArray = this.state.issues[this.state.currentPage] || [];
 
-    var tweetify = function(src) {
-      return String.prototype.slice.call(src, 0, 140);
+    /*
+    var tweetify = function(src, length) {
+      if (typeof src !== 'string') {return}
+      let segment = src.slice(0,length)
+      if (segment.slice(-1) === ' ') {
+        return segment 
+      }
+      console.log(length);
+
+      return tweetify(src, length + 1)
+    };
+   */
+    
+    var tweetify = function(src, length) {
+      if (src.length <= length) { return src }
+
+      for (let i=0; i < src.length; i++) {
+        console.log(src[length + i])
+        if (src[length + i] === ' ') {
+          return src.slice(0, length + i)
+        } 
+      }
     }
+        
 
     var createRow = function(data) {
       return (
@@ -56,8 +77,8 @@ export default class Table extends React.Component {
           </div>
           <div className="meat">
             <div className="title">{ data.title }</div>
-            <div className="tweet">{ tweetify(data.body) }</div>
-            <div className="meta">#{ data.number }</div> 
+            <div className="tweet">{ tweetify(data.body, 140) }</div>
+            <div className="meta">#{ data.number } opened by {data.user.login}</div> 
           </div>
         </div>
       )
