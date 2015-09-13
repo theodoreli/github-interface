@@ -21,6 +21,7 @@ export default class Table extends React.Component {
 
   componentDidMount() {
     Store.listen(this._onStoreChange)
+    Actions.getPage({toGetPage: 1}); // default to getting first page
   }
   componentWillUnmount() {
     Store.unlisten(this._onStoreChange)
