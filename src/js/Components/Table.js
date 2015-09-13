@@ -45,19 +45,6 @@ export default class Table extends React.Component {
     console.log(this.state);
     var dataArray = this.state.issues[this.state.currentPage] || [];
 
-    /*
-    var tweetify = function(src, length) {
-      if (typeof src !== 'string') {return}
-      let segment = src.slice(0,length)
-      if (segment.slice(-1) === ' ') {
-        return segment 
-      }
-      console.log(length);
-
-      return tweetify(src, length + 1)
-    };
-   */
-    
     var tweetify = function(src, length) {
       if (src.length <= length) { return src }
 
@@ -68,7 +55,6 @@ export default class Table extends React.Component {
         } 
       }
     }
-        
 
     var createRow = function(data) {
       return (
@@ -86,7 +72,7 @@ export default class Table extends React.Component {
     };
 
     return (
-      <div onClick={this._getStoreState.bind(this)}>
+      <div>
         {dataArray.map(createRow)}
       </div>
     )
