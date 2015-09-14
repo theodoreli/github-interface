@@ -27,7 +27,9 @@ export default class Pagination extends React.Component {
 
     return (
       <div className="pag-wrapper">
-        {Array.from(Array(10).keys()).map(number)}
+        <div className="pag">
+          {Array.from(Array(10).keys()).slice(1).map(number)}
+        </div>
       </div>
     )
   }

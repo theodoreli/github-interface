@@ -1,8 +1,13 @@
 .pag-item {
   display: inline-block;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.pag {
+  
 }
 
 .pag-wrapper {
-  border: 1px solid black;
+  text-align: center;
 }
