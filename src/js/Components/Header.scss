@@ -1,10 +1,15 @@
+.header-wrapper {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 300;
+}
+
 .header-wrapper img {
   height: 40px;
   width: 40px; 
 }
 
-.header-wrapper {
-  font-size: 22px;
-  font-weight: 400;
+.header-wrapper span {
+  margin-left: 10px;
+  vertical-align: super;
 }
-

@@ -17,14 +17,6 @@ class LocationActions {
     console.log('fail handler');
     console.log(res);
   }
-
-  locationsFailed(errorMessage) {
-    this.dispatch(errorMessage);
-  }
-
-  favoriteLocation(location) {
-    this.dispatch(location);
-  }
 }
 
 export default Alt.createActions(LocationActions);
