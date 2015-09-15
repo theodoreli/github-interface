@@ -21,7 +21,7 @@
       "es6-promise": "npm:es6-promise@^3.0.2",
       "react": "npm:react@0.13.3",
       "react-dom": "npm:react-dom@0.14.0-beta3",
-      "react-router": "npm:react-router@1.0.0-beta3",
+      "react-router": "npm:react-router@1.0.0-rc1",
       "reqwest": "npm:reqwest@^2.0.3",
       "scss": "github:theefer/plugin-sass@master"
     },

@@ -22,7 +22,7 @@ System.config({
     "es6-promise": "npm:es6-promise@3.0.2",
     "react": "npm:react@0.13.3",
     "react-dom": "npm:react-dom@0.14.0-beta3",
-    "react-router": "npm:react-router@1.0.0-beta3",
+    "react-router": "npm:react-router@1.0.0-rc1",
     "reqwest": "npm:reqwest@2.0.3",
     "scss": "github:theefer/plugin-sass@master",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -222,6 +222,12 @@ System.config({
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
     },
+    "npm:history@1.9.1": {
+      "deep-equal": "npm:deep-equal@1.0.1",
+      "invariant": "npm:invariant@2.1.0",
+      "qs": "npm:qs@4.0.0",
+      "warning": "npm:warning@2.0.0"
+    },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
@@ -283,11 +289,10 @@ System.config({
       "fbjs": "npm:fbjs@0.1.0-alpha.4",
       "react": "npm:react@0.14.0-beta3"
     },
-    "npm:react-router@1.0.0-beta3": {
+    "npm:react-router@1.0.0-rc1": {
+      "history": "npm:history@1.9.1",
       "invariant": "npm:invariant@2.1.0",
-      "keymirror": "npm:keymirror@0.1.1",
-      "qs": "npm:qs@2.4.1",
-      "warning": "npm:warning@1.0.2"
+      "warning": "npm:warning@2.0.0"
     },
     "npm:react@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -358,7 +363,8 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     },
-    "npm:warning@1.0.2": {
+    "npm:warning@2.0.0": {
+      "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     }
   }

@@ -63,7 +63,9 @@ export default class Table extends React.Component {
             <img src={data.user.avatar_url} />  
           </div>
           <div className="meat">
-            <div className="title">{ data.title }</div>
+            <div className="title">
+              <Link to={'/issue/' + data.number}> { data.title } </Link>
+            </div>
             <div className="tweet">{ tweetify(data.body, 140) }</div>
             <div className="meta">#{ data.number } opened by {data.user.login}</div> 
           </div>
