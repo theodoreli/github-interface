@@ -49,7 +49,6 @@ export default class Table extends React.Component {
       if (src.length <= length) { return src }
 
       for (let i=0; i < src.length; i++) {
-        console.log(src[length + i])
         if (src[length + i] === ' ') {
           return src.slice(0, length + i)
         } 
@@ -64,7 +63,7 @@ export default class Table extends React.Component {
           </div>
           <div className="meat">
             <div className="title">
-              <Link to={'/issue/' + data.number}> { data.title } </Link>
+              <Link to={'/issue/' + data.number} query={data} > { data.title } </Link>
             </div>
             <div className="tweet">{ tweetify(data.body, 140) }</div>
             <div className="meta">#{ data.number } opened by {data.user.login}</div> 
