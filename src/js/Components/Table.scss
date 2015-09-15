@@ -1,3 +1,15 @@
+@mixin link() {
+  color: black;
+  text-decoration: none;
+}
+
+a {
+  &:link {@include link()}
+  &:active {@include link()}
+  &:hover {@include link()}
+  &:visited {@include link()}
+}
+
 .data-row {
   margin-bottom: 45px;
 }
