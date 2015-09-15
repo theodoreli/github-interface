@@ -32,3 +32,32 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+.comments-wrapper {
+  margin-top: 40px;
+}
+
+.comments-wrapper img {
+  display: inline-block;
+  height: 48px;
+}
+
+.issue-meat {
+  display: inline-block;
+  margin-left: 16px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.issue-meat-meta {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #767676;
+  background-color: #F7F7F7;
+}
+
+.issue-meat-body {
+  padding: 15px;
+}
