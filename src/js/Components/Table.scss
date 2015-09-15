@@ -5,9 +5,12 @@
 
 a {
   &:link {@include link()}
-  &:active {@include link()}
-  &:hover {@include link()}
   &:visited {@include link()}
+  &:hover {
+    color: #8EB8EB;
+    text-decoration: none;
+  }
+  &:active {@include link()}
 }
 
 .data-row {
