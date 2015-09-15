@@ -41,7 +41,7 @@ const SearchSource = {
 // In the example they use these decorators. leave it out, screws up with store emitting events?
 //@createStore(Alt)
 //@datasource(SearchSource)
-class StoreTheo {
+class StorePage {
     constructor() {
         this.toGetPage = 1;
         this.pageContents = {}; 
@@ -72,4 +72,4 @@ class StoreTheo {
     }
 }
 
-export default Alt.createStore(StoreTheo, 'StoreTheo');
+export default Alt.createStore(StorePage, 'StorePage');
