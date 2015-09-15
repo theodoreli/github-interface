@@ -49,7 +49,8 @@ export default class Table extends React.Component {
       if (src.length <= length) { return src }
 
       for (let i=0; i < src.length; i++) {
-        if (src[length + i] === ' ') {
+        // look for spaces or return carriages (that we get from Markdown)
+        if (src[length + i] === ' ' || src[length + i] === String.fromCharCode(13)) {
           return src.slice(0, length + i)
         } 
       }
