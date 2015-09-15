@@ -28,6 +28,23 @@ export default class Issue extends React.Component {
     };
     console.log(formattedBody(issue.body))
 
+    var commentBuilder = function(issue) {
+      console.log(issue)
+      return (
+        <div>
+            <img src={issue.user.avatar_url} />
+            <div className="issue-meat">
+              <div className="issue-meat-meta">
+                <span style={{fontWeight: 400}}>{issue.user.login}</span> commented
+              </div>
+              <div className="issue-meat-body">
+                {issue.body}
+              </div>
+            </div>
+        </div>
+      )
+    };
+
     return (
       <div className="issue-wrapper">
         <div className="title">
@@ -44,16 +61,7 @@ export default class Issue extends React.Component {
           </span>
 
           <div className="comments-wrapper">
-            <img src={issue.user.avatar_url} />
-            <div className="issue-meat">
-              <div className="issue-meat-meta">
-                <span style={{fontWeight: 400}}>{issue.user.login}</span> commented
-              </div>
-              <div className="issue-meat-body">
-                {issue.body}
-              </div>
-            </div>
-
+            { [issue].concat(this.state.comments).map(commentBuilder) }
           </div> {/* end: comments-wrapper */ }
         </div>
       </div>
