@@ -7,12 +7,34 @@ import './Pagination.scss!';
 export default class Pagination extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      pageLink: Store.getState().pageLink
+    };
+
+    // we need the below as there is no auto beinding for 'this' in React for non React methods
+    // https://medium.com/@goatslacker/react-0-13-x-and-autobinding-b4906189425d
+    this._onStoreChange = this._onStoreChange.bind(this);
+  }
+
+  componentDidMount() {
+    Store.listen(this._onStoreChange)
+  }
+  componentWillUnmount() {
+    Store.unlisten(this._onStoreChange)
   }
 
   _pageToGo(num) {
     console.log('_pageToGo clicked');
     console.log(num)
     Actions.getPage({toGetPage: num});
+  }
+
+  _onStoreChange() {
+    console.log('pagination - onStoreChange');
+    this.setState({
+      pageLink: Store.getState().pageLink
+    });
+    console.log(this.state.pageLink);
   }
 
   render() {

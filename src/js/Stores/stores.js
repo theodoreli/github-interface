@@ -3,16 +3,19 @@ import { createStore, datasource } from 'alt/utils/decorators';
 import Actions from '../Actions/Actions';
 import reqwest from 'reqwest';
 import es6Promise from 'es6-promise';
+import parseLinkHeader from 'thlorenz/parse-link-header';
 
 es6Promise.polyfill();
 
 //https://github.com/goatslacker/alt/issues/380
+var req;
 
 const SearchSource = {
   performSearch: {
     // remotely fetch something (required)
     remote(state) { // this is our Store state
-      return reqwest({url: `https://api.github.com/repos/npm/npm/issues?page=${state.toGetPage}&per_page=25`});
+      req = reqwest({url: `https://api.github.com/repos/npm/npm/issues?page=${state.toGetPage}&per_page=25`});
+      return req
     },
 
     // this function checks in our local cache first
@@ -45,6 +48,7 @@ class StorePage {
     constructor() {
         this.toGetPage = 1;
         this.pageContents = {}; 
+        this.pageLink = {};
 
         this.registerAsync(SearchSource);
         
@@ -53,10 +57,32 @@ class StorePage {
     }
 
     onAjaxSucc(data) {
+      // const enforces that we point to the same place in memory. we can alter what it points to, but not the pointer itself.
+      const safeGetPage = (placement, links) => {
+        if (! (placement in links) ) {return null}
+        if (! ('page' in links[placement]) ) return null
+
+        let pageNum = links[placement].page;
+        pageNum = typeof pageNum === 'string' ? parseInt(pageNum, 10): pageNum;
+
+        return pageNum
+      }
+
       console.log('hey ajax succ')
       console.log(data)
+      // https://github.com/ded/reqwest/issues/134
+      var parsed = parseLinkHeader(req.request.getResponseHeader('Link'));
+      console.log(parsed);
 
+      //this.lastPage = typeof parsed.last.page === 'number' ? parsed.last.page: this.lastPage;
+      this.pageLink = {
+        first: safeGetPage('first', parsed),
+        last: safeGetPage('last', parsed),
+        next: safeGetPage('next', parsed),
+        prev: safeGetPage('prev', parsed)
+      }
       this.pageContents[this.toGetPage] = data;
+
     }
 
     onSearch(params) {

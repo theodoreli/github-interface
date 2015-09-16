@@ -19,11 +19,15 @@
     "dependencies": {
       "alt": "npm:alt@0.16.7",
       "es6-promise": "npm:es6-promise@^3.0.2",
+      "querystring": "github:jspm/nodelibs-querystring@^0.1.0",
       "react": "npm:react@0.13.3",
       "react-dom": "npm:react-dom@0.14.0-beta3",
       "react-router": "npm:react-router@1.0.0-rc1",
       "reqwest": "npm:reqwest@^2.0.3",
-      "scss": "github:theefer/plugin-sass@master"
+      "scss": "github:theefer/plugin-sass@master",
+      "thlorenz/parse-link-header": "github:thlorenz/parse-link-header@^0.4.1",
+      "url": "github:jspm/nodelibs-url@^0.1.0",
+      "xtend": "npm:xtend@^4.0.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
