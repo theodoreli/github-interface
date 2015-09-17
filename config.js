@@ -20,6 +20,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.4",
     "es6-promise": "npm:es6-promise@3.0.2",
+    "marked": "npm:marked@0.3.5",
     "querystring": "github:jspm/nodelibs-querystring@0.1.0",
     "react": "npm:react@0.13.3",
     "react-dom": "npm:react-dom@0.14.0-beta3",

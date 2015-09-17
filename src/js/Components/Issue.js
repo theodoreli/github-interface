@@ -1,6 +1,7 @@
 import React from 'react';
 import reqwest from 'reqwest';
 import './Issue.scss!';
+import marked from 'marked';
 
 export default class Issue extends React.Component {
   constructor(props) {
@@ -23,24 +24,23 @@ export default class Issue extends React.Component {
     console.log(this.props)
     console.log(this.state.comments)
     var issue = this.props.location.query;
-    var formattedBody = function(body) {
-      return body.replace(new RegExp(String.fromCharCode(13), 'g'), <br/>)
-    };
+    const formattedBody = function(src) {
+        return marked(src, {sanitize: true})
+    }
     console.log(formattedBody(issue.body))
 
     var commentBuilder = function(issue) {
       console.log(issue)
       return (
         <div>
-            <img src={issue.user.avatar_url} />
-            <div className="issue-meat">
-              <div className="issue-meat-meta">
-                <span style={{fontWeight: 400}}>{issue.user.login}</span> commented
-              </div>
-              <div className="issue-meat-body">
-                {issue.body}
-              </div>
+          <img src={issue.user.avatar_url} />
+          <div className="issue-meat">
+            <div className="issue-meat-meta">
+              <span style={{fontWeight: 400}}>{issue.user.login}</span> commented
             </div>
+            <div className="issue-meat-body" dangerouslySetInnerHTML={{__html: formattedBody(issue.body)}}>
+            </div>
+          </div>
         </div>
       )
     };
@@ -62,7 +62,7 @@ export default class Issue extends React.Component {
 
           <div className="comments-wrapper">
             { [issue].concat(this.state.comments).map(commentBuilder) }
-          </div> {/* end: comments-wrapper */ }
+          </div>
         </div>
       </div>
     )
