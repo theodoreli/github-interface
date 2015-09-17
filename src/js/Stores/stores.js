@@ -48,7 +48,10 @@ class StorePage {
     constructor() {
         this.toGetPage = 1;
         this.pageContents = {}; 
-        this.pageLink = {};
+        this.pageLink = {
+          first: 1,
+          last: 1
+        };
 
         this.registerAsync(SearchSource);
         
