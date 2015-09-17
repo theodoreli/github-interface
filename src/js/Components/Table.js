@@ -57,6 +57,13 @@ export default class Table extends React.Component {
     }
 
     var createRow = function(data) {
+      var arrLabels = data.labels || [{color:'red', name: 'marcy'}];
+      var labelBuilder = function(label) {
+        return (
+          <span className="label" style={{backgroundColor: '#'+label.color}}>{label.name}</span>
+        )
+      };
+
       return (
         <div className="data-row">
           <div className="avatar-wrapper">
@@ -66,7 +73,10 @@ export default class Table extends React.Component {
             <div className="table-issue-title">
               <Link to={'/issue/' + data.number} query={data} > { data.title } </Link>
             </div>
-            <div className="meta">@{data.user.login} issue #{ data.number }</div> 
+            <div className="meta">
+              @{data.user.login} issue #{ data.number }
+               {arrLabels.map(labelBuilder)}
+            </div> 
             <div className="tweet">{ tweetify(data.body, 140) }</div>
           </div>
         </div>

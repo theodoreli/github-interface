@@ -40,7 +40,6 @@ export default class Pagination extends React.Component {
   render() {
     // pagination rules: always show first and last. also always show five left and five right of current number. the rest can be filled with ellipsis
     const number = function(item) {
-      console.log(item);
       return (
         <div key={item.id} className="pag-item" onClick={this._pageToGo.bind(this, item)}>
           {item}
