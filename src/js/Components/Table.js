@@ -45,9 +45,10 @@ export default class Table extends React.Component {
   render() {
     console.log(this.state);
     let dataArray = this.state.issues[this.state.currentPage] || [];
-    const stripDown = src => {return removeMarkdown(src)} ;
+    const stripDown = src => {return removeMarkdown(src)};
 
-    const tweetify = function(src, length) {
+    // recursive function. snips closest to length specified as long as last char is a empty string or return carriage
+    const tweetify = (src, length) => {
       if (src.length <= length) { return src }
 
       for (let i=0; i < src.length; i++) {
