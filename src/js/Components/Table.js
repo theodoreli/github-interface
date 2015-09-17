@@ -63,18 +63,18 @@ export default class Table extends React.Component {
             <img src={data.user.avatar_url} />  
           </div>
           <div className="meat">
-            <div className="title">
+            <div className="table-issue-title">
               <Link to={'/issue/' + data.number} query={data} > { data.title } </Link>
             </div>
+            <div className="meta">@{data.user.login} issue #{ data.number }</div> 
             <div className="tweet">{ tweetify(data.body, 140) }</div>
-            <div className="meta">#{ data.number } opened by {data.user.login}</div> 
           </div>
         </div>
       )
     };
 
     return (
-      <div>
+      <div className="tweet-table">
         {dataArray.map(createRow)}
       </div>
     )

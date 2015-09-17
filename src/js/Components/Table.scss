@@ -3,6 +3,11 @@
   text-decoration: none;
 }
 
+.tweet-table {
+  border: 1px solid #ddd;
+  background-color: #F7F7F7;
+}
+
 a {
   &:link {@include link()}
   &:visited {@include link()}
@@ -14,14 +19,20 @@ a {
 }
 
 .data-row {
-  margin-bottom: 45px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tweet-table .data-row:last-child {
+  border: 0;
 }
 
 .avatar-wrapper {
   display: inline-block;
 
   img {
-    width: 150px;
+    width: 48px;
+    margin-right: 12px;
     border-radius: 3px;
   }
 }
@@ -29,25 +40,20 @@ a {
 .meat {
   display: inline-block;
   width: 700px;
-  margin-left: 45px;
   vertical-align: top;
+  font-size: 14px;
+  font-weight: 300;
 
-  .title {
-    margin-bottom: 16px;
-    font-size: 20px;
-    font-weight: 400;
+  .table-issue-title {
+    font-size: 30px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .tweet {
-    margin-bottom: 16px;
-    font-size: 16px;
-    font-weight: 300;
-  }
   .meta {
-    font-size: 16px;
-    font-weight: 300;
-    color: #7F7F7F;
+    color: #767676;
+    margin-bottom: 18px;
+  }
+  .tweet {
   }
 }
