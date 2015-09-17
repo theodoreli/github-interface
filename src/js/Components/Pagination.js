@@ -6,9 +6,10 @@ import './Pagination.scss!';
 
 export default class Pagination extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      pageLink: Store.getState().pageLink
+      pageLink: Store.getState().pageLink,
+      currentPage: Store.getState().toGetPage
     };
 
     // we need the below as there is no auto beinding for 'this' in React for non React methods
@@ -32,7 +33,8 @@ export default class Pagination extends React.Component {
   _onStoreChange() {
     console.log('pagination - onStoreChange');
     this.setState({
-      pageLink: Store.getState().pageLink
+      pageLink: Store.getState().pageLink,
+      currentPage: Store.getState().toGetPage
     });
     console.log(this.state.pageLink);
   }
@@ -40,8 +42,9 @@ export default class Pagination extends React.Component {
   render() {
     // pagination rules: always show first and last. also always show five left and five right of current number. the rest can be filled with ellipsis
     const number = function(item) {
+      var underline = (item === this.state.currentPage) ? {textDecoration: 'underline'}: {}; 
       return (
-        <div key={item.id} className="pag-item" onClick={this._pageToGo.bind(this, item)}>
+        <div style={underline} key={item.id} className="pag-item" onClick={this._pageToGo.bind(this, item)}>
           {item}
         </div>
       )
