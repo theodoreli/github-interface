@@ -3,6 +3,7 @@ import { Router, Route, Link } from 'react-router';
 import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
 import './Table.scss!';
+import removeMarkdown from 'remove-markdown';
 
 export default class Table extends React.Component {
   constructor(props) {
@@ -43,9 +44,10 @@ export default class Table extends React.Component {
 
   render() {
     console.log(this.state);
-    var dataArray = this.state.issues[this.state.currentPage] || [];
+    let dataArray = this.state.issues[this.state.currentPage] || [];
+    const stripDown = src => {return removeMarkdown(src)} ;
 
-    var tweetify = function(src, length) {
+    const tweetify = function(src, length) {
       if (src.length <= length) { return src }
 
       for (let i=0; i < src.length; i++) {
@@ -77,7 +79,9 @@ export default class Table extends React.Component {
               @{data.user.login} issue #{ data.number }
                {arrLabels.map(labelBuilder)}
             </div> 
-            <div className="tweet">{ tweetify(data.body, 140) }</div>
+            <div className="tweet">
+              { tweetify( stripDown(data.body) , 140) }
+            </div>
           </div>
         </div>
       )

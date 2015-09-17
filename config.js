@@ -25,6 +25,7 @@ System.config({
     "react": "npm:react@0.13.3",
     "react-dom": "npm:react-dom@0.14.0-beta3",
     "react-router": "npm:react-router@1.0.0-rc1",
+    "remove-markdown": "npm:remove-markdown@0.0.6",
     "reqwest": "npm:reqwest@2.0.3",
     "scss": "github:theefer/plugin-sass@master",
     "thlorenz/parse-link-header": "github:thlorenz/parse-link-header@0.4.1",
