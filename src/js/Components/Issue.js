@@ -22,8 +22,6 @@ export default class Issue extends React.Component {
 
 
   render() {
-    console.log(this.props)
-    console.log(this.state.comments)
     var issue = this.props.location.query;
     const markDown = src => {
         return marked(src, {sanitize: true})
@@ -31,7 +29,7 @@ export default class Issue extends React.Component {
     const userLinking = src => {
         // http://stackoverflow.com/questions/1234712/javascript-replace-with-reference-to-matched-group
         // http://es5.github.io/#x15.5.4.11 // $& is the matched substring, but we wont use it here unfortunately. nonetheless, cool trick.
-        return src.replace(/@\w+/g, (a,b) => {
+        return src.replace(/\s@\w+/g, (a,b) => {
           let trimmed = a.slice(1);
           return '<a href="//github.com/' + trimmed + '" target="_new">' + a + '</a>'
         })
@@ -40,10 +38,7 @@ export default class Issue extends React.Component {
         return userLinking( markDown(src) );
     };
 
-    console.log(formattedBody(issue.body))
-
     var commentBuilder = function(issue) {
-      console.log(issue)
       return (
         <div>
           <img src={issue.user.avatar_url} />
