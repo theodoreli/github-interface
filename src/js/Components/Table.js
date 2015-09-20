@@ -1,9 +1,11 @@
 import React from 'react';
+import Label from './Label';
 import { Router, Route, Link } from 'react-router';
 import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
 import './Table.scss!';
 import removeMarkdown from 'remove-markdown';
+
 
 export default class Table extends React.Component {
   constructor(props) {
@@ -60,13 +62,6 @@ export default class Table extends React.Component {
     }
 
     var createRow = function(data) {
-      var arrLabels = data.labels || [{color:'red', name: 'marcy'}];
-      var labelBuilder = function(label) {
-        return (
-          <span className="label" style={{backgroundColor: '#'+label.color}}>{label.name}</span>
-        )
-      };
-
       return (
         <div className="data-row">
           <div className="avatar-wrapper">
@@ -78,7 +73,7 @@ export default class Table extends React.Component {
             </div>
             <div className="meta">
               @{data.user.login} issue #{ data.number }
-               {arrLabels.map(labelBuilder)}
+              <Label labels={data.labels}/>
             </div> 
             <div className="tweet">
               { tweetify( stripDown(data.body) , 140) }
@@ -95,3 +90,4 @@ export default class Table extends React.Component {
     )
   }
 }
+

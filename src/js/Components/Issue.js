@@ -1,4 +1,5 @@
 import React from 'react';
+import Label from './Label';
 import reqwest from 'reqwest';
 import './Issue.scss!';
 import marked from 'marked';
@@ -70,6 +71,7 @@ export default class Issue extends React.Component {
           <span>
             <span className="issue-user-login">{issue.user.login} </span>
             opened this issue · {this.state.comments.length} comments  
+            <Label labels={issue.labels} />
           </span>
 
           <div className="comments-wrapper">
