@@ -4,15 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-jest": "^5.3.0",
+    "jest-cli": "^0.5.7",
     "jspm": "^0.16.2"
   },
   "devDependencies": {
     "jspm": "^0.16.2"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ],
+    "testPathIgnorePatterns": [
+      "./node_modules/",
+      "./jspm_packages"
+    ]
   },
   "jspm": {
     "directories": {},
