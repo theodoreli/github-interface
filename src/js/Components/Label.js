@@ -1,4 +1,5 @@
 import React from 'react';
+import './Label.scss!';
 
 export default class Label extends React.Component { //remember that classes are not hoisted (contrary to functions)
     constructor(props) {
