@@ -5,12 +5,15 @@ export default class Label extends React.Component { //remember that classes are
     constructor(props) {
         super(props);
         this.state = this.props;
-        // this if block is for normalization of our labels data. 
-        // it is needed currently inside Issues.js as I surmise that passing the labels array through React-router's query (which strigifies it to key value pairs) gives us this strange data structure
+        this.state.labels = this.state.labels || []; // safety, so that later when we call .map it doesnt fart
 
-        if (this.props.labels.length > 0 && Array.isArray(this.props.labels[0].color)) {
-            let labelColor = this.props.labels[0].color;
-            let labelName = this.props.labels[0].name;
+        let propsLabels = this.props.labels;
+
+        // this if block is for normalization of our labels data --> when we detect that color is an array rather than a value (it could be name or url as well)
+        // it is needed currently inside Issues.js as I surmise that passing the labels array through React-router's query (which strigifies it to key value pairs) gives us this strange data structure
+        if (Array.isArray(propsLabels) && propsLabels.length > 0 && Array.isArray(propsLabels[0].color)) {
+            let labelColor = propsLabels[0].color;
+            let labelName = propsLabels[0].name;
             let ret = [];
 
             // we are essentially zipping up our two arrays
