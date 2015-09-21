@@ -28,10 +28,9 @@ const SearchSource = {
 
     // here we setup some actions to handle our response
     //loading: SearchActions.loadingResults, // (optional)
-    //success: SearchActions.receivedResults, // (required)
+
     success: Actions.ajaxSucc, // (required)
-    //error: SearchActions.fetchingResultsFailed, // (required)
-    error: Actions.ajaxFail,
+    error: Actions.ajaxFail, // (required)
 
     // should fetch has precedence over the value returned by local in determining whether remote should be called
     // in this particular example if the value is present locally it would return but still fire off the remote request (optional)
