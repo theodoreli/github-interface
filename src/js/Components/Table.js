@@ -69,7 +69,7 @@ export default class Table extends React.Component {
           </div>
           <div className="meat">
             <div className="table-issue-title">
-              <Link to={'/issue/' + data.number} query={data} > { data.title } </Link>
+              <Link to={'/issue/' + data.number} > { data.title } </Link>
             </div>
             <div className="meta">
               @{data.user.login} issue #{ data.number }

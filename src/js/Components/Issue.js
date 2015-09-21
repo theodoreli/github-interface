@@ -16,10 +16,11 @@ export default class Issue extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    let doES7Async = async function() {
+    const doES7Async = async function() {
+        let issueNum = this.props.params.number;
         let vals = await Promise.all([
-            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}`}),
-            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}/comments`}) 
+            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${issueNum}`}),
+            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${issueNum}/comments`}) 
         ]);
         // hitting issues gives us an obj, comments gives us an array
         this.setState({ 
