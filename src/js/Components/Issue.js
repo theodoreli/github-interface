@@ -8,28 +8,53 @@ export default class Issue extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
+      comments: [],
+      issue: [],
+      loaded: false
     };
   }
 
   componentDidMount() {
+    console.log(this.props)
+    /*
+    reqwest({url: `https://api.github.com/repos/npm/npm/issues/${this.props.location.query.number}`})
+      .then( (res) => {
+        console.log(res);
+      });
+
     reqwest({url: `https://api.github.com/repos/npm/npm/issues/${this.props.location.query.number}/comments`})
       .then( (res) => {
         console.log(res);
         this.setState({comments: res});
       });
+     */
+    var theo = async function() {
+        let vals = await Promise.all([
+            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}`}),
+            reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}/comments`}) 
+        ]);
+        // hitting issues gives us an obj, comments gives us an array
+        this.setState({ 
+            issue: vals[0],
+            comments: vals[1],
+            loaded: true
+        })
+        //vals.forEach(console.log.bind(console)); // this is super cool btw.
+     }.bind(this) // binding to a function like this, it needs be a function expression (having var in the front)
+
+     theo();
   }
 
 
   render() {
-    var issue = this.props.location.query;
+    var issue = this.state.issue || { user: {avatar_url: '', login: ''}, body: ''};
     const markDown = src => {
         return marked(src, {sanitize: true})
     };
     const userLinking = src => {
         // http://stackoverflow.com/questions/1234712/javascript-replace-with-reference-to-matched-group
         // http://es5.github.io/#x15.5.4.11 // $& is the matched substring, but we wont use it here unfortunately. nonetheless, cool trick.
-        return src.replace(/\s@\w+/g, (a,b) => {
+        return src.replace(/@\w+/g, (a,b) => {
           let trimmed = a.slice(1);
           return '<a href="//github.com/' + trimmed + '" target="_new">' + a + '</a>'
         })
@@ -39,8 +64,9 @@ export default class Issue extends React.Component {
     };
 
     var commentBuilder = function(issue) {
+      console.log(issue)
       return (
-        <div>
+        <div key={issue.id}>
           <img src={issue.user.avatar_url} />
           <div className="issue-meat">
             <div className="issue-meat-meta">
@@ -53,8 +79,9 @@ export default class Issue extends React.Component {
       )
     };
 
-    return (
-      <div className="issue-wrapper">
+    let main = (issue) => {
+      return (
+      <div>
         <div className="title">
           {issue.title}
           <span className="issue-number"> #{issue.number}</span>
@@ -74,6 +101,15 @@ export default class Issue extends React.Component {
           </div>
         </div>
       </div>
+        )
+    } 
+
+    return (
+
+      <div className="issue-wrapper">
+        {this.state.loaded ? main(this.state.issue) : <div>loading...</div>}
+      </div>
+
     )
   }
 }
