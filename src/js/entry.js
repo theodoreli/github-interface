@@ -3,6 +3,7 @@ import React from 'react';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 //import { default as HashHistory} from 'react-router/lib/HashHistory'; // needed in 1.0.0-beta3
 import Header from 'src/js/Components/Header';
+import Footer from 'src/js/Components/Footer';
 import Main from 'src/js/Components/main';
 import Issue from 'src/js/Components/Issue';
 
@@ -22,6 +23,7 @@ class App extends React.Component {
       <div>
         <Header />
         {this.props.children}
+        <Footer />
       </div>
     )
   }
