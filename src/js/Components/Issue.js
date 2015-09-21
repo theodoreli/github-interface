@@ -16,19 +16,7 @@ export default class Issue extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    /*
-    reqwest({url: `https://api.github.com/repos/npm/npm/issues/${this.props.location.query.number}`})
-      .then( (res) => {
-        console.log(res);
-      });
-
-    reqwest({url: `https://api.github.com/repos/npm/npm/issues/${this.props.location.query.number}/comments`})
-      .then( (res) => {
-        console.log(res);
-        this.setState({comments: res});
-      });
-     */
-    var theo = async function() {
+    let doES7Async = async function() {
         let vals = await Promise.all([
             reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}`}),
             reqwest( {url: `https://api.github.com/repos/npm/npm/issues/${this.props.params.number}/comments`}) 
@@ -37,17 +25,18 @@ export default class Issue extends React.Component {
         this.setState({ 
             issue: vals[0],
             comments: vals[1],
-            loaded: true
+            loaded: true // until this is flipped to true, we dont render the good stuff yet
         })
         //vals.forEach(console.log.bind(console)); // this is super cool btw.
      }.bind(this) // binding to a function like this, it needs be a function expression (having var in the front)
 
-     theo();
+     doES7Async();
   }
 
 
   render() {
-    var issue = this.state.issue || { user: {avatar_url: '', login: ''}, body: ''};
+    //var issue = this.state.issue || { user: {avatar_url: '', login: ''}, body: ''};
+    let issue = this.state.issue;
     const markDown = src => {
         return marked(src, {sanitize: true})
     };
@@ -63,7 +52,8 @@ export default class Issue extends React.Component {
         return userLinking( markDown(src) );
     };
 
-    var commentBuilder = function(issue) {
+    // helper. this function is called for each of an array's elements
+    const convoBuilder = function(issue) {
       console.log(issue)
       return (
         <div key={issue.id}>
@@ -79,31 +69,36 @@ export default class Issue extends React.Component {
       )
     };
 
-    let main = (issue) => {
+    // helper. show this when ajax queries have loaded.
+    const main = (issue) => {
       return (
-      <div>
-        <div className="title">
-          {issue.title}
-          <span className="issue-number"> #{issue.number}</span>
-        </div>
-        <div className="sub-title">
-          <span className={"status " + issue.state }>
-            {issue.state} 
-          </span>
-          <span>
-            <span className="issue-user-login">{issue.user.login} </span>
-            opened this issue · {this.state.comments.length} comments  
-            <Label labels={issue.labels} />
-          </span>
+        <div>
+          <div className="title">
+            {issue.title}
+            <span className="issue-number"> #{issue.number}</span>
+          </div>
+          <div className="sub-title">
+            <span className={"status " + issue.state }>
+              {issue.state} 
+            </span>
+            <span>
+              <span className="issue-user-login">{issue.user.login} </span>
+              opened this issue · {this.state.comments.length} comments  
+              <Label labels={issue.labels} />
+            </span>
 
-          <div className="comments-wrapper">
-            { [issue].concat(this.state.comments).map(commentBuilder) }
+            <div className="comments-wrapper">
+              { [issue].concat(this.state.comments).map(convoBuilder) }
+            </div>
           </div>
         </div>
-      </div>
-        )
+      )
     } 
 
+    //==//==
+    //==//==
+    //==//==
+    // THIS IS REACT CLASSES's render()'s RETURN. THE OUTTER GRAND DADDY
     return (
 
       <div className="issue-wrapper">
