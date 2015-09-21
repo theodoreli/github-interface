@@ -3,7 +3,7 @@ Hitting the GitHub developer API: recreated the issues explorer. Here we have ap
 
 #### Flexing the muscles of this stack:
 - React (0.13)
-  - React-Router
+  - React-Router (Single Page App --> to give some more reponsiveness to experience)
 - Alt (Flux)
 - jspm
 - ES6 (via Babel)
