@@ -76,7 +76,6 @@ class StorePage {
       var parsed = parseLinkHeader(req.request.getResponseHeader('Link'));
       console.log(parsed);
 
-      //this.lastPage = typeof parsed.last.page === 'number' ? parsed.last.page: this.lastPage;
       this.pageLink = {
         first: safeGetPage('first', parsed),
         last: safeGetPage('last', parsed),
@@ -90,8 +89,6 @@ class StorePage {
     onSearch(params) {
         console.log(params)
         this.toGetPage = params.toGetPage;
-        //this.state.toGetPage = params.toGetPage;
-        console.log(this.toGetPage);
 
         if (!this.getInstance().isLoading()) {
           console.log('inside !this.getInstance()');
