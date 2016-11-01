@@ -12,7 +12,7 @@
     "jspm": "^0.16.2"
   },
   "devDependencies": {
-    "jspm": "^0.16.2"
+    "jspm": "^0.16.47"
   },
   "jspm": {
     "directories": {},
