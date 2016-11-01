@@ -18,22 +18,25 @@ export default class Issue extends React.Component {
 
   componentDidMount() {
     let issueNum = this.props.params.number;
-    let vals = (async function() {
-      return await Promise.all([
+
+    (async function() {
+      let vals =  await Promise.all([
         reqwest({
           url: `https://api.github.com/repos/npm/npm/issues/${issueNum}`
         }),
         reqwest({
           url: `https://api.github.com/repos/npm/npm/issues/${issueNum}/comments`
         })
-      ]); // return
-    })();
+      ]);
 
-    this.setState({
-      issue: vals[0],
-      comments: vals[1],
-      loaded: true // until this is flipped to true, we dont render the good stuff yet
-    });
+      this.setState({
+        issue: vals[0],
+        comments: vals[1],
+        loaded: true // until this is flipped to true, we dont render the good stuff yet
+      });
+
+    }.bind(this))();
+
   }
 
 
