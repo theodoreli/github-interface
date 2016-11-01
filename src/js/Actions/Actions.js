@@ -1,4 +1,5 @@
-import Alt from '../alt'; // remember this is our own alt file, not the contributed module
+import Alt from '../alt';
+
 
 class LocationActions {
   constructor() {
@@ -7,14 +8,13 @@ class LocationActions {
     );
   }
 
+
   ajaxSucc(res) {
-    console.log('success handler');
-    console.log(res);
     this.dispatch(res)
   }
+
+
   ajaxFail(res) {
-    console.log('fail handler');
-    console.log(res);
   }
 }
 
