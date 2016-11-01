@@ -5,6 +5,7 @@ export default class Footer extends React.Component {
     super(props)
   }
 
+
   render() {
     let footerWrapper = {
       marginTop: '30px',

@@ -15,6 +15,7 @@ export default class Issue extends React.Component {
     };
   }
 
+
   componentDidMount() {
     let issueNum = this.props.params.number;
     let vals = (async function() {
