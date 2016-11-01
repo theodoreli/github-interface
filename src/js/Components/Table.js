@@ -1,10 +1,11 @@
 import React from 'react';
-import Label from './Label';
 import { Router, Route, Link } from 'react-router';
+import removeMarkdown from 'remove-markdown';
+
+import Label from './Label';
 import Actions from '../Actions/Actions';
 import Store from '../Stores/stores';
 import './Table.scss!';
-import removeMarkdown from 'remove-markdown';
 
 
 export default class Table extends React.Component {
@@ -22,13 +23,19 @@ export default class Table extends React.Component {
     this._onStoreChange = this._onStoreChange.bind(this);
   }
 
+
   componentDidMount() {
     Store.listen(this._onStoreChange)
-    Actions.getPage({toGetPage: 1}); // default to getting first page
+
+    // Getting the first page is the default behavior.
+    Actions.getPage({toGetPage: 1});
   }
+
+
   componentWillUnmount() {
     Store.unlisten(this._onStoreChange)
   }
+
 
   _onStoreChange() {
     console.log('_onStoreChange()');
@@ -40,12 +47,12 @@ export default class Table extends React.Component {
     // then use this as a key from stores to look for issue data;
   }
 
+
   _getStoreState() {
-    console.log(Store.getState());
   }
 
+
   render() {
-    console.log(this.state);
     let dataArray = this.state.issues[this.state.currentPage] || [];
     const stripDown = src => {return removeMarkdown(src)};
 
@@ -57,7 +64,7 @@ export default class Table extends React.Component {
         // look for spaces or return carriages (that we get from Markdown)
         if (src[length + i] === ' ' || src[length + i] === String.fromCharCode(13)) {
           return src.slice(0, length + i)
-        } 
+        }
       }
     }
 
@@ -65,7 +72,7 @@ export default class Table extends React.Component {
       return (
         <div className="data-row">
           <div className="avatar-wrapper">
-            <img src={data.user.avatar_url} />  
+            <img src={data.user.avatar_url} />
           </div>
           <div className="meat">
             <div className="table-issue-title">
@@ -74,7 +81,7 @@ export default class Table extends React.Component {
             <div className="meta">
               @{data.user.login} issue #{ data.number }
               <Label labels={data.labels}/>
-            </div> 
+            </div>
             <div className="tweet">
               { tweetify( stripDown(data.body) , 140) }
             </div>
